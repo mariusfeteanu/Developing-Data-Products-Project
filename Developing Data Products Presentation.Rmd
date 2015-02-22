@@ -1,0 +1,31 @@
+---
+title: "Developing Data Products Presentation"
+author: "Marius"
+output: ioslides_presentation
+---
+
+## Shiny Regression Model Builder
+
+This simple shiny app can be used to see what factors might impact vehicle performance.
+
+## Can be used to fit one of three dependent variables
+
+- Miles/(US) gallon
+- Gross horsepower
+- 1/4 mile time
+
+## This is done using the mtcars data set as input. Any independent variables can be chosen as input.
+
+```{r}
+library(datasets)
+data(mtcars)
+setdiff(colnames(mtcars), c("mpg", "hp", "qsec"))
+```
+
+## Press the submit button after selecting parameters to see a table with factors and pretty graphs.
+
+```{r, echo=FALSE}
+par(mfrow = c(2, 2))
+plot(lm(hp~., mtcars))
+```
+
